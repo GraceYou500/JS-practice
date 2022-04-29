@@ -9,3 +9,18 @@ console.log(firstName);
 console.log(firstName);
 console.log(firstName);
 console.log(firstName);
+
+let myFirstJob = "Coder";
+let myCurrentJob = "Programmer";
+
+console.log(myFirstJob);
+
+// Assignment
+
+let country = "China";
+let continent = "Asia";
+let population = "1300mil";
+
+console.log(country);
+console.log(continent);
+console.log(population);
