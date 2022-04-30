@@ -43,43 +43,54 @@
 // year = 1992;
 // console.log(typeof year);
 
-let age = 30;
-age = 31;
+// let age = 30;
+// age = 31;
 
-const birthYear = 1992;
-// birthYear = 1991;
+// const birthYear = 1992;
+// // birthYear = 1991;
 
-// const Job;
+// // const Job;
 
-var job = "accounting";
-job = "Coder";
+// var job = "accounting";
+// job = "Coder";
 
-//math operators
+// //math operators
+// const now = 2037;
+// const ageGrace = now - 1991;
+// const ageTiff = now - 2019;
+// console.log(ageGrace, ageTiff);
+
+// console.log(ageGrace * 2, ageGrace / 10, 2 ** 3);
+// // 2 ** 3 means 2 to the power of 3 = 2 *2* 2
+
+// const firstName = "Jonas";
+// const lastName = "Schm";
+// console.log(firstName + " " + lastName);
+
+// //Assignment operators
+// let x = 10 + 5;
+// x += 10; // x = x + 10 = 25
+// x *= 4; // x = x * 4 = 25 * 4
+// x++; // x = x + 1
+// x--;
+// x--;
+// console.log(x);
+
+// //comparision operators
+// console.log(ageGrace > ageTiff); //., <, >=, <=
+// console.log(ageTiff >= 18);
+
+// const isFullAge = ageTiff >= 18;
+
 const now = 2037;
 const ageGrace = now - 1991;
-const ageTiff = now - 2019;
-console.log(ageGrace, ageTiff);
-
-console.log(ageGrace * 2, ageGrace / 10, 2 ** 3);
-// 2 ** 3 means 2 to the power of 3 = 2 *2* 2
-
-const firstName = "Jonas";
-const lastName = "Schm";
-console.log(firstName + " " + lastName);
-
-//Assignment operators
-let x = 10 + 5;
-x += 10; // x = x + 10 = 25
-x *= 4; // x = x * 4 = 25 * 4
-x++; // x = x + 1
-x--;
-x--;
-console.log(x);
-
-//comparision operators
-console.log(ageGrace > ageTiff); //., <, >=, <=
-console.log(ageTiff >= 18);
-
-const isFullAge = ageTiff >= 18;
+const ageTiff = now - 2018;
 
 console.log(now - 1991 > now - 2018);
+
+let x, y;
+x = y = 25 - 10 - 5;
+console.log(x, y);
+
+const averageAge = (ageGrace + ageTiff) / 2;
+console.log(ageGrace, ageTiff, averageAge);
