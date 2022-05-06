@@ -265,31 +265,82 @@
 //   console.log("Someone else should drive..");
 // }
 
-const dolphins1 = 97;
-const dolphins2 = 112;
-const dolphins3 = 106;
+// const dolphins1 = 97;
+// const dolphins2 = 112;
+// const dolphins3 = 106;
 
-const Koalas1 = 109;
-const Koalas2 = 95;
-const Koalas3 = 50;
+// const Koalas1 = 109;
+// const Koalas2 = 95;
+// const Koalas3 = 50;
 
-const averageDolphins = (dolphins1 + dolphins2 + dolphins3) / 3;
-const averageKoalas = (Koalas1 + Koalas2 + Koalas3) / 3;
-console.log(averageDolphins, averageKoalas);
+// const averageDolphins = (dolphins1 + dolphins2 + dolphins3) / 3;
+// const averageKoalas = (Koalas1 + Koalas2 + Koalas3) / 3;
+// console.log(averageDolphins, averageKoalas);
 
-const dolphinsMin = dolphins1 > 100 || dolphins2 > 100 || dolphins3 > 100;
-const koalasMin = Koalas1 > 100 || Koalas2 > 100 || Koalas3 > 100;
+// const dolphinsMin = dolphins1 > 100 || dolphins2 > 100 || dolphins3 > 100;
+// const koalasMin = Koalas1 > 100 || Koalas2 > 100 || Koalas3 > 100;
 
-if (averageDolphins > averageKoalas && averageDolphins >= 100) {
-  console.log("Dplphins is the winner!");
-} else if (
-  averageDolphins === averageKoalas &&
-  averageDolphins >= 100 &&
-  averageKoalas >= 100
-) {
-  console.log("Both of you are winners!");
-} else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
-  console.log("Koalas is the winner!");
-} else {
-  console.log("No one win the trophy..");
+// if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+//   console.log("Dplphins is the winner!");
+// } else if (
+//   averageDolphins === averageKoalas &&
+//   averageDolphins >= 100 &&
+//   averageKoalas >= 100
+// ) {
+//   console.log("Both of you are winners!");
+// } else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
+//   console.log("Koalas is the winner!");
+// } else {
+//   console.log("No one win the trophy..");
+// }
+
+// const day = "ewe";
+
+// switch (day) {
+//   case "monday": // day === "monday"
+//     console.log("Plan course structure");
+//     console.log("Go to coding meetup");
+//     break;
+//   case "tuesday":
+//     console.log("Prepare theory videos");
+//     break;
+//   case "wednesday":
+//   case "thursday":
+//     console.log("Write code examples");
+//     break;
+//   case "friday":
+//     console.log("Record videos");
+//     break;
+//   case "saturday":
+//   case "sunday":
+//     console.log("Enjoy the weekend:D");
+//     break;
+//   default:
+//     console.log("Not a valid day!");
+// }
+
+// if (day === "monday") {
+//   console.log("Plan course structure");
+//   console.log("Go to coding meetup");
+// } else if (day === "tuesday") {
+//   console.log("Prepare theory videos");
+// } else if (day === "wednesday" || day === "thursday") {
+//   console.log("Write code examples");
+// } else if (day === "friday") {
+//   console.log("Record videos");
+// } else if (day === "saturday" || day === "sunday") {
+//   console.log("Enjoy the weekend:D");
+// } else {
+//   console.log("Not a valid day!");
+// }
+
+3 + 4;
+1991;
+true && false && !false;
+
+if (23 > 10) {
+  const str = "23 is bigger";
 }
+
+const me = "Jonas";
+console.log(`I'm ${2037 - 1992} years old ${me}`);
