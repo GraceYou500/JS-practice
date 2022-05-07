@@ -334,13 +334,41 @@
 //   console.log("Not a valid day!");
 // }
 
-3 + 4;
-1991;
-true && false && !false;
+// 3 + 4;
+// 1991;
+// true && false && !false;
 
-if (23 > 10) {
-  const str = "23 is bigger";
-}
+// if (23 > 10) {
+//   const str = "23 is bigger";
+// }
 
-const me = "Jonas";
-console.log(`I'm ${2037 - 1992} years old ${me}`);
+// const me = "Jonas";
+// console.log(`I'm ${2037 - 1992} years old ${me}`);
+
+const age = 25;
+// age >= 18
+//   ? console.log("I like to drink wine!")
+//   : console.log("I like to drink water..");
+
+const drink = age >= 18 ? "Wine" : "Water";
+console.log(drink);
+
+// let drink2;
+// if (age >= 18) {
+//   drink2 = "wine";
+// } else {
+//   drink2 = "water";
+// }
+
+// console.log(drink2);
+
+// console.log(`I linke to drink ${age >= 18 ? "wine" : "water"}!`);
+
+const billValue = 430;
+const billTips =
+  billValue >= 50 && billValue <= 300 ? billValue * 0.15 : billValue * 0.2;
+console.log(
+  `The bill was ${billValue}, the tip was ${billTips}, and the total value was ${
+    billValue + billTips
+  }.`
+);
