@@ -107,42 +107,46 @@
 //   // return retirment;
 //   return `${firstName} retires in ${retirment} years.`;
 // };
+// console.log(yearsUntilRetired(1991, "Jonas"));
 
 // //Grace solution for challabnge 1
-const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+// const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
-// const dolphinsAveg = calcAverage(44, 23, 71);
-// const koalasAveg = calcAverage(65, 54, 49);
-// console.log(dolphinsAveg);
-// console.log(koalasAveg);
+// // const dolphinsAveg = calcAverage(44, 23, 71);
+// // const koalasAveg = calcAverage(65, 54, 49);
+// // console.log(dolphinsAveg);
+// // console.log(koalasAveg);
+// const d = [1, 2, 3];
+// const checkWinner = function (
+//   scoreD1,
+//   scoreD2,
+//   scoreD3,
+//   scoreK1,
+//   scoreK2,
+//   scoreK3
+// ) {
+//   const avgDolphins = calcAverage(scoreD1, scoreD2, scoreD3);
+//   const avgkoalas = calcAverage(scoreK1, scoreK2, scoreK3);
+//   let winner = 2;
+//   if (avgDolphins >= avgkoalas * 2) {
+//     winner = `Dolphins win (${avgDolphins} vs. ${avgkoalas}).`;
+//   } else if (avgkoalas >= avgDolphins * 2) {
+//     let winner = `koalas win (${avgkoalas} vs. ${avgDolphins}).`;
+//     return winner;
+//   } else {
+//     let winner = "No winner!";
+//     return winner;
+//   }
+//   return winner;
+// };
+// const aa = checkWinner(44, 23, 71, 65, 54, 49);
+// console.log("here1", aa);
+// console.log("here2", checkWinner(85, 54, 41, 23, 34, 27));
 
-const checkWinner = function (
-  scoreD1,
-  scoreD2,
-  scoreD3,
-  scoreK1,
-  scoreK2,
-  scoreK3
-) {
-  const avgDolphins = calcAverage(scoreD1, scoreD2, scoreD3);
-  const avgkoalas = calcAverage(scoreK1, scoreK2, scoreK3);
-
-  if (avgDolphins >= avgkoalas * 2) {
-    return console.log(`Dolphins win (${avgDolphins} vs. ${avgkoalas}).`);
-  } else if (avgkoalas >= avgDolphins * 2) {
-    return console.assert.log(`koalas win (${avgkoalas} vs. ${avgDolphins}).`);
-  } else {
-    return console.log("No winner!");
-  }
-};
-
-console.log(checkWinner(44, 23, 71, 65, 54, 49));
-console.log(checkWinner(85, 54, 41, 23, 34, 27));
-
-//Jonas solution
+// Jonas solution
 
 // const calcAverage = (a, b, c) => (a + b + c) / 3;
-// console.log(calcAverage(3, 4, 5));
+// // console.log(calcAverage(3, 4, 5));
 
 // //Test 1
 // let scoreDolphins = calcAverage(44, 23, 71);
@@ -165,3 +169,47 @@ console.log(checkWinner(85, 54, 41, 23, 34, 27));
 // scorekoalas = calcAverage(23, 34, 27);
 // console.log(scoreDolphins, scorekoalas);
 // checkWinner(scoreDolphins, scorekoalas);
+
+const friend1 = "Michael";
+const friend2 = "Steve";
+const friend3 = "Peter";
+
+const friends = ["Michael", "Steve", "Peter"];
+console.log(friends);
+
+const y = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]);
+console.log(friends[2]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+friends[2] = "jay";
+console.log(friends);
+
+//cannot replace the array totally, but can change element in the array
+// friends = ["Bob", "Aly"];
+
+const firstName = "Jonas";
+const jonas = [firstName, "Schem", 2037 - 1991, "teacher", friends];
+console.log(jonas);
+console.log(jonas.length);
+
+//Excercise
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+const years = [1990, 1967, 2002, 2010, 2018];
+
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3);
+
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1]),
+];
+
+console.log(ages);
