@@ -245,33 +245,79 @@
 //   console.log("You have a friend called Steve");
 // }
 
-const calTip = function (billValue) {
-  if (billValue >= 50 && billValue <= 300) {
-    const tips = billValue * 0.15;
-    return tips;
-  } else {
-    const tips = billValue * 0.2;
-    return tips;
-  }
+// const calTip = function (billValue) {
+//   if (billValue >= 50 && billValue <= 300) {
+//     const tips = billValue * 0.15;
+//     return tips;
+//   } else {
+//     const tips = billValue * 0.2;
+//     return tips;
+//   }
+// };
+
+// console.log(calTip(100));
+
+// const bills = [125, 555, 44];
+// console.log(bills);
+// const tipOfBill = [calTip(bills[0]), calTip(bills[1]), calTip(bills[2])];
+// console.log(tipOfBill);
+
+// const total = [
+//   bills[0] + tipOfBill[0],
+//   bills[1] + tipOfBill[1],
+//   bills[2] + tipOfBill[2],
+// ];
+// console.log(total);
+
+// const calTipJonas = function (bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// // const calcTipJonas = (bill) =>
+// //   bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+// const jonasArray = [
+//   "Jonas",
+//   "schem",
+//   2037 - 1991,
+//   "teacher",
+//   ["Micheal", "Peter", "Steve"],
+// ];
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schem",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Micheal", "Peter", "Steve"],
 };
 
-console.log(calTip(100));
+console.log(jonas);
 
-const bills = [125, 555, 44];
-console.log(bills);
-const tipOfBill = [calTip(bills[0]), calTip(bills[1]), calTip(bills[2])];
-console.log(tipOfBill);
+console.log(jonas.lastName);
+console.log(jonas["lastName"]);
 
-const total = [
-  bills[0] + tipOfBill[0],
-  bills[1] + tipOfBill[1],
-  bills[2] + tipOfBill[2],
-];
-console.log(total);
+const namekey = "Name";
+console.log(jonas["first" + namekey]);
+console.log(jonas["last" + namekey]);
 
-const calTipJonas = function (bill) {
-  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-};
+const interestedIn = prompt(
+  "What do you want to know about Jonas? Choose between firstName, lastName, age, job and friends"
+);
 
-// const calcTipJonas = (bill) =>
-//   bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+if (jonas[interestedIn]) {
+  console.log(jonas[interestedIn]);
+} else {
+  console.log(
+    "Wrong request! Choose between firstName, lastName, age, job and friends"
+  );
+}
+
+jonas.location = "Sydney";
+jonas["twitter"] = "@graceyou";
+console.log(jonas);
+
+//Challenge
+const cents = `${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}.`;
+
+console.log(cents);
