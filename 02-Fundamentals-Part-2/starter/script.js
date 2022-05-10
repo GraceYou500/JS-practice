@@ -170,46 +170,108 @@
 // console.log(scoreDolphins, scorekoalas);
 // checkWinner(scoreDolphins, scorekoalas);
 
-const friend1 = "Michael";
-const friend2 = "Steve";
-const friend3 = "Peter";
+// const friend1 = "Michael";
+// const friend2 = "Steve";
+// const friend3 = "Peter";
 
-const friends = ["Michael", "Steve", "Peter"];
-console.log(friends);
+// const friends = ["Michael", "Steve", "Peter"];
+// console.log(friends);
 
-const y = new Array(1991, 1984, 2008, 2020);
+// const y = new Array(1991, 1984, 2008, 2020);
 
-console.log(friends[0]);
-console.log(friends[2]);
-console.log(friends.length);
-console.log(friends[friends.length - 1]);
+// console.log(friends[0]);
+// console.log(friends[2]);
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
 
-friends[2] = "jay";
-console.log(friends);
+// friends[2] = "jay";
+// console.log(friends);
 
-//cannot replace the array totally, but can change element in the array
-// friends = ["Bob", "Aly"];
+// //cannot replace the array totally, but can change element in the array
+// // friends = ["Bob", "Aly"];
 
-const firstName = "Jonas";
-const jonas = [firstName, "Schem", 2037 - 1991, "teacher", friends];
-console.log(jonas);
-console.log(jonas.length);
+// const firstName = "Jonas";
+// const jonas = [firstName, "Schem", 2037 - 1991, "teacher", friends];
+// console.log(jonas);
+// console.log(jonas.length);
 
-//Excercise
-const calcAge = function (birthYear) {
-  return 2037 - birthYear;
+// //Excercise
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// const ages = [
+//   calcAge(years[0]),
+//   calcAge(years[1]),
+//   calcAge(years[years.length - 1]),
+// ];
+
+// console.log(ages);
+
+// const friends = ["Michael", "Steve", "Peter"];
+
+// //Add elements
+// const newLength = friends.push("jay");
+// console.log(friends);
+// console.log(newLength);
+
+// friends.unshift("John");
+// console.log(friends);
+
+// //Remove element
+// friends.pop(); //remove last element
+// const popped = friends.pop(); //remove last element, and return last element
+// console.log(popped);
+// console.log(friends);
+
+// friends.shift(); // remov and return the first element
+// console.log(friends);
+
+// console.log(friends.indexOf("Steve"));
+// console.log(friends.indexOf("Bob"));
+
+// friends.push(23);
+// console.log(friends.includes("Steve"));
+// console.log(friends.includes("Bob"));
+// console.log(friends.includes(23));
+
+// if (friends.includes("Steve")) {
+//   console.log("You have a friend called Steve");
+// }
+
+const calTip = function (billValue) {
+  if (billValue >= 50 && billValue <= 300) {
+    const tips = billValue * 0.15;
+    return tips;
+  } else {
+    const tips = billValue * 0.2;
+    return tips;
+  }
 };
-const years = [1990, 1967, 2002, 2010, 2018];
 
-const age1 = calcAge(years[0]);
-const age2 = calcAge(years[1]);
-const age3 = calcAge(years[years.length - 1]);
-console.log(age1, age2, age3);
+console.log(calTip(100));
 
-const ages = [
-  calcAge(years[0]),
-  calcAge(years[1]),
-  calcAge(years[years.length - 1]),
+const bills = [125, 555, 44];
+console.log(bills);
+const tipOfBill = [calTip(bills[0]), calTip(bills[1]), calTip(bills[2])];
+console.log(tipOfBill);
+
+const total = [
+  bills[0] + tipOfBill[0],
+  bills[1] + tipOfBill[1],
+  bills[2] + tipOfBill[2],
 ];
+console.log(total);
 
-console.log(ages);
+const calTipJonas = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+// const calcTipJonas = (bill) =>
+//   bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
