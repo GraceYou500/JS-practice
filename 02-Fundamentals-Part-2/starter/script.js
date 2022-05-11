@@ -322,60 +322,94 @@
 
 // console.log(cents);
 
-const jonas = {
-  firstName: "Jonas",
-  lastName: "Schem",
-  birthYear: 1991,
-  job: "teacher",
-  friends: ["Micheal", "Peter", "Steve"],
-  hasDriversLicense: true,
+// const jonas = {
+//   firstName: "Jonas",
+//   lastName: "Schem",
+//   birthYear: 1991,
+//   job: "teacher",
+//   friends: ["Micheal", "Peter", "Steve"],
+//   hasDriversLicense: true,
 
-  // calcAge: function (birthYear) {
-  //   return 2037 - birthYear;
-  // },
+//   // calcAge: function (birthYear) {
+//   //   return 2037 - birthYear;
+//   // },
 
-  // calcAge: function () {
-  //   // console.log(this);
-  //   return 2037 - this.birthYear;
-  // },
+//   // calcAge: function () {
+//   //   // console.log(this);
+//   //   return 2037 - this.birthYear;
+//   // },
 
-  calcAge: function () {
-    this.age = 2037 - this.birthYear;
-    return this.age;
-  },
+//   calcAge: function () {
+//     this.age = 2037 - this.birthYear;
+//     return this.age;
+//   },
 
-  // getSummary: function () {
-  //   if (this.hasDriversLicense) {
-  //     this.summary = `${this.firstName} is a ${this.calcAge()}-year old ${
-  //       this.job
-  //     }, and he has a driver's license.`;
-  //     return this.summary;
-  //   } else {
-  //     return `${this.firstName} is a ${this.calcAge()}-year old ${
-  //       this.job
-  //     }, and he has no driver's license.`;
-  //   }
-  // },
+// getSummary: function () {
+//   if (this.hasDriversLicense) {
+//     this.summary = `${this.firstName} is a ${this.calcAge()}-year old ${
+//       this.job
+//     }, and he has a driver's license.`;
+//     return this.summary;
+//   } else {
+//     return `${this.firstName} is a ${this.calcAge()}-year old ${
+//       this.job
+//     }, and he has no driver's license.`;
+//   }
+// },
 
-  getSummary: function () {
-    return `${this.firstName} is a ${this.calcAge()}-year old ${
-      this.job
-    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+//   getSummary: function () {
+//     return `${this.firstName} is a ${this.calcAge()}-year old ${
+//       this.job
+//     }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+//   },
+// };
+
+// console.log("here2", jonas.calcAge());
+// // console.log(jonas["calcAge"](1991));
+
+// // console.log("here3", jonas.age);
+// // console.log(jonas.age);
+// // console.log(jonas.age);
+// // console.log("here1", jonas.age);
+
+// //Challenge
+
+// console.log("here4", jonas.getSummary());
+// // console.log("here 5", jonas.summary);
+
+// jonas.hobby = "fishing";
+// console.log(jonas);
+
+//Challengs 3
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
   },
 };
 
-console.log("here2", jonas.calcAge());
-// console.log(jonas["calcAge"](1991));
+const john = {
+  fullName: "John  Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
 
-// console.log("here3", jonas.age);
-// console.log(jonas.age);
-// console.log(jonas.age);
-// console.log("here1", jonas.age);
+mark.calcBMI();
+john.calcBMI();
 
-//Challenge
-
-console.log("here4", jonas.getSummary());
-// console.log("here 5", jonas.summary);
-
-jonas.hobby = "fishing";
-console.log(jonas);
+if (mark.BMI > john.BMI) {
+  console.log(
+    `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})!`
+  );
+} else {
+  console.log(
+    `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`
+  );
+}
