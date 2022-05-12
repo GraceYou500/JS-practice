@@ -425,49 +425,90 @@
 //   console.log(`Lifting weights repitition ${rep}`);
 // }
 
-const jonasArray = [
-  "Jonas",
-  "schem",
-  2037 - 1991,
-  "teacher",
-  ["Micheal", "Peter", "Steve"],
-  true,
-];
+// const jonasArray = [
+//   "Jonas",
+//   "schem",
+//   2037 - 1991,
+//   "teacher",
+//   ["Micheal", "Peter", "Steve"],
+//   true,
+// ];
 
-const types = [];
+// const types = [];
 
-for (let i = 0; i < jonasArray.length; i++) {
-  //reading from jonas array
-  console.log(jonasArray[i], typeof jonasArray[i]);
+// for (let i = 0; i < jonasArray.length; i++) {
+//   //reading from jonas array
+//   console.log(jonasArray[i], typeof jonasArray[i]);
 
-  // filling types array
-  // types[i] = typeof jonasArray[i];
-  types.push(typeof jonasArray[i]);
+//   // filling types array
+//   // types[i] = typeof jonasArray[i];
+//   types.push(typeof jonasArray[i]);
+// }
+
+// console.log(types);
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+
+// console.log(ages);
+
+// //continue and break
+// console.log("--- ONLY STRINGS ---");
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] !== "string") continue;
+
+//   console.log(jonasArray[i], typeof jonasArray[i]);
+// }
+
+// console.log("--- BREAK WITH NUMBER ---");
+
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] === "number") break;
+
+//   console.log(jonasArray[i], typeof jonasArray[i]);
+// }
+
+// const jonasArray = [
+//   "Jonas",
+//   "schem",
+//   2037 - 1991,
+//   "teacher",
+//   ["Micheal", "Peter", "Steve"],
+//   true,
+// ];
+
+// for (let i = jonasArray.length - 1; i >= 0; i--) {
+//   console.log(i, jonasArray[i]);
+// }
+
+// for (let exercise = 1; exercise < 4; exercise++) {
+//   console.log(`-------Staring exercise ${exercise}`);
+
+//   for (let rep = 1; rep < 6; rep++) {
+//     console.log(`exercise ${exercise}: Lifting weight repetition ${rep}`);
+//   }
+// }
+
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weight repetition ${rep}`);
+// }
+
+let rep = 1;
+while (rep <= 10) {
+  // console.log(`WHILE: Lifting weight repetition ${rep}`);
+  rep++;
 }
 
-console.log(types);
+let dice = Math.trunc(Math.random() * 6) + 1;
 
-const years = [1991, 2007, 1969, 2020];
-const ages = [];
-
-for (let i = 0; i < years.length; i++) {
-  ages.push(2037 - years[i]);
-}
-
-console.log(ages);
-
-//continue and break
-console.log("--- ONLY STRINGS ---");
-for (let i = 0; i < jonasArray.length; i++) {
-  if (typeof jonasArray[i] !== "string") continue;
-
-  console.log(jonasArray[i], typeof jonasArray[i]);
-}
-
-console.log("--- BREAK WITH NUMBER ---");
-
-for (let i = 0; i < jonasArray.length; i++) {
-  if (typeof jonasArray[i] === "number") break;
-
-  console.log(jonasArray[i], typeof jonasArray[i]);
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) {
+    console.log("Loop is about to end...");
+  }
 }
