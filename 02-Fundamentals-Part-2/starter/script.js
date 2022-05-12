@@ -381,35 +381,93 @@
 // console.log(jonas);
 
 //Challengs 3
-const mark = {
-  fullName: "Mark Miller",
-  mass: 78,
-  height: 1.69,
-  calcBMI: function () {
-    this.BMI = this.mass / this.height ** 2;
-    return this.BMI;
-  },
-};
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI: function () {
+//     this.BMI = this.mass / this.height ** 2;
+//     return this.BMI;
+//   },
+// };
 
-const john = {
-  fullName: "John  Smith",
-  mass: 92,
-  height: 1.95,
-  calcBMI: function () {
-    this.BMI = this.mass / this.height ** 2;
-    return this.BMI;
-  },
-};
+// const john = {
+//   fullName: "John  Smith",
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI: function () {
+//     this.BMI = this.mass / this.height ** 2;
+//     return this.BMI;
+//   },
+// };
 
-mark.calcBMI();
-john.calcBMI();
+// mark.calcBMI();
+// john.calcBMI();
 
-if (mark.BMI > john.BMI) {
-  console.log(
-    `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})!`
-  );
-} else {
-  console.log(
-    `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`
-  );
+// if (mark.BMI > john.BMI) {
+//   console.log(
+//     `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})!`
+//   );
+// } else {
+//   console.log(
+//     `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`
+//   );
+// }
+
+// console.log("Lifting weights repitition 1");
+// console.log("Lifting weights repitition 2");
+// console.log("Lifting weights repitition 3");
+// console.log("Lifting weights repitition 4");
+// console.log("Lifting weights repitition 5");
+
+//for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repitition ${rep}`);
+// }
+
+const jonasArray = [
+  "Jonas",
+  "schem",
+  2037 - 1991,
+  "teacher",
+  ["Micheal", "Peter", "Steve"],
+  true,
+];
+
+const types = [];
+
+for (let i = 0; i < jonasArray.length; i++) {
+  //reading from jonas array
+  console.log(jonasArray[i], typeof jonasArray[i]);
+
+  // filling types array
+  // types[i] = typeof jonasArray[i];
+  types.push(typeof jonasArray[i]);
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+//continue and break
+console.log("--- ONLY STRINGS ---");
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] !== "string") continue;
+
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+console.log("--- BREAK WITH NUMBER ---");
+
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] === "number") break;
+
+  console.log(jonasArray[i], typeof jonasArray[i]);
 }
