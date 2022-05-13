@@ -93,3 +93,17 @@ const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
 
 // Identify
 console.log(amplitudeBug);
+
+const maxTempreture = [17, 21, 23];
+const maxTempreture2 = [12, 5, -5, 0, 4];
+
+let printString = '...';
+const printForecast = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    printString = printString + ` ${arr[i]} in ${i + 1} days ...`;
+  }
+  return printString;
+};
+
+console.log(printForecast(maxTempreture));
+console.log(printForecast(maxTempreture2));
