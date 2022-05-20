@@ -68,19 +68,109 @@ function addDecl(a, b) {
 // var addArrow = (a, b) => a + b;  Not work because undefined(a, b) is not a function
 
 //Example
-console.log(numProducts);
-if (!numProducts) deleteShopingCart();
+// console.log(numProducts);
+// if (!numProducts) deleteShopingCart();
 
-var numProducts = 10;
+// var numProducts = 10;
 
-function deleteShopingCart() {
-  console.log('All products deleted!');
-}
+// function deleteShopingCart() {
+//   console.log('All products deleted!');
+// }
 
-var x = 1;
-let y = 2;
-const z = 3;
+// var x = 1;
+// let y = 2;
+// const z = 3;
 
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
+// console.log(x === window.x);
+// console.log(y === window.y);
+// console.log(z === window.z);
+
+// console.log(this);
+
+// const calcAge2 = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log('here2', this);
+// };
+
+// calcAge2(1991);
+
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   console.log('here2', this);
+// };
+// calcAgeArrow(1990);
+
+// const jonas = {
+//   year: 1991,
+//   calcAge: function () {
+//     console.log('here3', this);
+//     console.log(2037 - this.year);
+//   },
+// };
+
+// jonas.calcAge();
+
+// const mati = {
+//   year: 2017,
+// };
+
+// mati.calcAge = jonas.calcAge;
+
+// console.log('here4', mati);
+// mati.calcAge();
+
+// const f = jonas.calcAge;
+
+// console.log(f);
+// f();
+
+// var firstName2 = 'Mati';
+
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log('here5', this);
+    console.log(2037 - this.year);
+
+    // Solution 1
+    // const self = this; // self or that to point the object
+    // const isMillen = function () {
+    //   console.log('here6', self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   // console.log(this.year >= 1981 && year <= 1996);
+    // };
+
+    //Solution 2
+
+    const isMillen = () => {
+      console.log('here6', this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+
+    isMillen();
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+jonas.greet();
+jonas.calcAge();
+
+//Argument keyword
+const addExpre = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpre(2, 5);
+addExpre(2, 5, 8, 12);
+
+//Argument keywords only can use (exist) in expression and declaration function, cannot in Arrow function
+var addArrowFu = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+
+addArrowFu(2, 5, 8);
