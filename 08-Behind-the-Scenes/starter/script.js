@@ -168,9 +168,64 @@ addExpre(2, 5);
 addExpre(2, 5, 8, 12);
 
 //Argument keywords only can use (exist) in expression and declaration function, cannot in Arrow function
-var addArrowFu = (a, b) => {
-  console.log(arguments);
-  return a + b;
+// var addArrowFu = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addArrowFu(2, 5, 8);
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me2 = {
+  name: 'Jonas',
+  age: 30,
+};
+// console.log('Me2', me2);
+
+const friend = me2;
+
+console.log('Me2 before 27', me2);
+
+friend.age = 27;
+console.log('friend:', friend);
+console.log('Me2', me2);
+
+//Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+//Reference Types
+const jessica = {
+  firstName: 'Jesica',
+  lastName: 'Williams',
+  age: 27,
 };
 
-addArrowFu(2, 5, 8);
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+
+//Copying objects
+const jessica2 = {
+  firstName: 'Jesica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
