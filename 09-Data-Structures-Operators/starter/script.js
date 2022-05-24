@@ -43,51 +43,54 @@ const restaurant = {
   },
 };
 
-restaurant.orderDelivery({
-  time: '23.30',
-  address: 'foxall road',
-  mainIndex: 2,
-  starterIndex: 2,
-});
+///////////////////////////////////
+//Destructuring Objects
 
-restaurant.orderDelivery({
-  address: '110 foxall',
-  starterIndex: 1,
-});
+// restaurant.orderDelivery({
+//   time: '23.30',
+//   address: 'foxall road',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
 
-///////////////////////////////////////////////////////
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// restaurant.orderDelivery({
+//   address: '110 foxall',
+//   starterIndex: 1,
+// });
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+// ///////////////////////////////////////////////////////
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-console.log(restaurantName, hours, tags);
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
 
-////Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// console.log(restaurantName, hours, tags);
 
-////Mutating variables
+// ////Default values
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
 
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
+// ////Mutating variables
 
-({ a, b } = obj);
-console.log(a, b);
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
 
-//Nested Objects
-const { fri } = openingHours;
-console.log(fri);
+// ({ a, b } = obj);
+// console.log(a, b);
 
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// //Nested Objects
+// const { fri } = openingHours;
+// console.log(fri);
+
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
 
 //////////////////////////////////////////////
 // Destructuring Arrays
