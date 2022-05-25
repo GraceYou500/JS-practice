@@ -7,10 +7,10 @@ const flights =
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
-  name2: {
-    firstName: 'Grace',
-    lastname: 'You',
-  },
+  // name2: {
+  //   firstName: 'Grace',
+  //   lastname: 'You',
+  // },
 
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
@@ -52,32 +52,75 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIng, ...otherIngs) {
+    console.log(mainIng, otherIngs);
+  },
 };
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+//1) Destructuring
 
-const newGoodArr = [1, 2, ...arr];
-console.log(newGoodArr);
+//Spread. because on right side of =
+const arr = [1, 2, ...[3, 4]];
 
-console.log(...newGoodArr);
+//REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+const [pizza, , Risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, Risotto, otherFood);
+
+//Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) Functions
+
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 6, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mashrooms', 'onions', 'olives', 'spinach');
+restaurant.orderPizza('mashrooms');
+
+//////////////////////////////////////////////////////////
+//The Spread Operator (...)
+
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
+
+// const newGoodArr = [1, 2, ...arr];
+// console.log(newGoodArr);
+
+// console.log(...newGoodArr);
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
 //Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-//Join 2 arrays
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
+// //Join 2 arrays
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu);
 
-// Iterables: arrays, strings, maps, sets. NOT objects
-const str = 'Jonas';
-const letters = [...str, ' ', 'S.'];
+// // Iterables: arrays, strings, maps, sets. NOT objects
+// const str = 'Jonas';
+// const letters = [...str, ' ', 'S.'];
 
-console.log(...str);
+// console.log(...str);
 // console.log(`${...str} Schem`); // NOT work, as ...only can use in building array and used as argument in function, seperate by comma.
 
 //Real-world example
@@ -92,18 +135,18 @@ console.log(...str);
 
 //Objects
 
-const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
-console.log(newRestaurant);
+// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'rest Roma';
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'rest Roma';
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
 
-console.log(restaurant.name2.firstName);
-restaurantCopy.name2.firstName = 'Carl';
-console.log(restaurantCopy.name2.firstName);
-console.log(restaurant.name2.firstName);
+// console.log(restaurant.name2.firstName);
+// restaurantCopy.name2.firstName = 'Carl';
+// console.log(restaurantCopy.name2.firstName);
+// console.log(restaurant.name2.firstName);
 
 ///////////////////////////////////
 //Destructuring Objects
