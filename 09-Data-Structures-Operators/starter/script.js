@@ -58,36 +58,36 @@ const restaurant = {
   },
 };
 
-const rest1 = {
-  name: 'carpri',
-  // numGuests: 20,
-  numGuests: 0,
-};
+// const rest1 = {
+//   name: 'carpri',
+//   // numGuests: 20,
+//   numGuests: 0,
+// };
 
-const rest2 = {
-  name: 'La Piazza',
-  owner: 'Givanni Rossi',
-};
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Givanni Rossi',
+// };
 
-//OR assignment operator
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
+// //OR assignment operator
+// // rest1.numGuests = rest1.numGuests || 10;
+// // rest2.numGuests = rest2.numGuests || 10;
 
-// rest1.numGuests ||= 10;
-// rest2.numGuests ||= 10;
+// // rest1.numGuests ||= 10;
+// // rest2.numGuests ||= 10;
 
-//nullish assignment operator (null or undefined )
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// //nullish assignment operator (null or undefined )
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
-// AND assignment operator
-// rest1.owner = rest1.owner && '<ANONYMOUS>';
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+// // AND assignment operator
+// // rest1.owner = rest1.owner && '<ANONYMOUS>';
+// // rest2.owner = rest2.owner && '<ANONYMOUS>';
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 
 /////////////////////////////////////////////////
 //The Nullish Coalescing Operator
@@ -227,7 +227,6 @@ console.log(rest2);
 
 ///////////////////////////////////
 //Destructuring Objects
-
 // restaurant.orderDelivery({
 //   time: '23.30',
 //   address: 'foxall road',
@@ -244,11 +243,11 @@ console.log(rest2);
 // const { name, openingHours, categories } = restaurant;
 // console.log(name, openingHours, categories);
 
-// const {
-//   name: restaurantName,
-//   openingHours: hours,
-//   categories: tags,
-// } = restaurant;
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
 
 // console.log(restaurantName, hours, tags);
 
@@ -312,3 +311,95 @@ console.log(rest2);
 // //Default values
 // const [p = 1, q = 1, r = 1] = [8];
 // console.log(p, q, r);
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+
+  printGoals: function (...players) {
+    console.log(...players, `,Total scored ${players.length}.`);
+  },
+};
+
+// 1.
+// const players1 = game.players[0];
+// const players2 = game.players[1];
+
+const [players1, players2] = game.players;
+
+console.log(players1, players2);
+
+// 2.
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+
+// 3.
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+// 4.
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+
+// 5.
+// game.odds.team1 ??= 0;
+// game.odds.team2 ??= 0;
+// game.odds.draw ??= 0;
+
+const { date: day, odds } = game;
+let { team1, team2, x: draw } = odds;
+console.log('a', team1, odds);
+odds.team1 = 3;
+team1 = 2;
+// const { team1, team2, x: draw } = game.odds;
+game.odds.draw = game.odds.x;
+delete game.odds.x;
+console.log('b', team1, odds.team1, game.odds);
+// console.log('aaaa', date, odds);
+console.log(game);
+// 6.
+game.printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+game.printGoals(...game.scored);
+
+// 7.
+// console.log(game.odds.team1 < game.odds.team2 && 'Team1 is more likely to win');
+// console.log(game.odds.team2 < game.odds.team1 && 'Team2 is more likely to win');
+
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
