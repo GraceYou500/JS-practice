@@ -6,6 +6,7 @@ const flights =
 
 // Data needed for first part of the section
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const asdasd = 'thu';
 
 const openingHours = {
   [weekdays[3]]: {
@@ -21,6 +22,20 @@ const openingHours = {
     close: 24,
   },
 };
+
+// const username = {
+//   Carl: 'carsdadqwdxz123esd21',
+//   Grace: 'gradawdczsfqawdczx',
+// };
+
+// const password = {
+
+//   [username.Carl]: 'lsk',
+//   [username.Grace]: 'gra',
+// };
+
+// console.log(username);
+// console.log(password);
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -58,28 +73,29 @@ const restaurant = {
   },
 };
 
-// Property NAMES
-const properties = Object.keys(openingHours);
-console.log(properties);
-let openStr = `We are open on ${properties.length} days:`;
+//////////////////////////////////////////////////////////////////
+// // Property NAMES
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+// let openStr = `We are open on ${properties.length} days:`;
 
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr);
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
 
-//Property VALUES
-const values = Object.values(openingHours);
-console.log(values);
+// //Property VALUES
+// const values = Object.values(openingHours);
+// console.log(values);
 
-// Entire object
-const entries = Object.entries(openingHours);
-console.log(entries);
+// // Entire object
+// const entries = Object.entries(openingHours);
+// console.log(entries);
 
-// [key, value]
-for (const [day, { open, close }] of entries) {
-  console.log(`On ${day} we open at ${open} and close at ${close}`);
-}
+// // [key, value]
+// for (const [day, { open, close }] of entries) {
+//   console.log(`On ${day} we open at ${open} and close at ${close}`);
+// }
 
 /////////////////////////////////////////////////////////////////////////////////
 //Optional chaining
@@ -382,51 +398,105 @@ for (const [day, { open, close }] of entries) {
 
 //////////////////////////////////////////////
 //Challenge 1
-// const game = {
-//   team1: 'Bayern Munich',
-//   team2: 'Borrussia Dortmund',
-//   players: [
-//     [
-//       'Neuer',
-//       'Pavard',
-//       'Martinez',
-//       'Alaba',
-//       'Davies',
-//       'Kimmich',
-//       'Goretzka',
-//       'Coman',
-//       'Muller',
-//       'Gnarby',
-//       'Lewandowski',
-//     ],
-//     [
-//       'Burki',
-//       'Schulz',
-//       'Hummels',
-//       'Akanji',
-//       'Hakimi',
-//       'Weigl',
-//       'Witsel',
-//       'Hazard',
-//       'Brandt',
-//       'Sancho',
-//       'Gotze',
-//     ],
-//   ],
-//   score: '4:0',
-//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-//   date: 'Nov 9th, 2037',
-//   odds: {
-//     team1: 1.33,
-//     x: 3.25,
-//     team2: 6.5,
-//   },
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels', 'Lewandowski'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
 
-//   printGoals: function (...players) {
-//     console.log(...players, `,Total scored ${players.length}.`);
-//   },
-// };
+  printGoals: function (...players) {
+    console.log(...players, `,Total scored ${players.length}.`);
+  },
+};
+game.odds;
+// const aaa = 'odds';
+game['odds'];
 
+// Challenge 2
+
+// 1.
+for (const playerName of game.scored.entries()) {
+  console.log(`Goal${playerName[0] + 1}: ${playerName[1]}`);
+}
+
+// 2.
+
+const oddNum = Object.values(game.odds);
+console.log(oddNum);
+let oddItem = 0;
+for (const odd of oddNum) {
+  oddItem += odd;
+}
+console.log(`${oddItem / oddNum.length}`);
+
+// 3.
+const teamMapping = {
+  team1: game.team1,
+  x: 'draw',
+  team2: game.team2,
+};
+
+const oddEntires = Object.entries(game.odds);
+console.log(oddEntires);
+
+for (const [team, value] of oddEntires) {
+  console.log(`odd of ${teamMapping[team]}: ${value}`);
+
+  // console.log(`Odd od ${game[team] || 'draw'}: ${value}`);
+}
+
+// 4.
+const scorers = {};
+// scorers.Lewandowski;
+// scorers['Lewandowski'];
+
+for (const scorer of game.scored) {
+  // scorers[scorer]
+  // console.log(scorer);
+  if (!scorers[scorer]) {
+    scorers[scorer] = 1;
+  } else {
+    scorers[scorer] += 1;
+  }
+  // scorers[scorer] = 1;
+}
+console.log(scorers);
+
+// Challenge 1
 // // 1.
 // // const players1 = game.players[0];
 // // const players2 = game.players[1];
