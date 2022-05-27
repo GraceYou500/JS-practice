@@ -73,6 +73,41 @@ const restaurant = {
   },
 };
 
+//////////////////////////////////////////////
+// Set
+const orderSet = new Set([
+  'Psta',
+  'pizza',
+  'pizza',
+  'risotto',
+  'Psta',
+  'pizza',
+]);
+console.log(orderSet);
+
+console.log(new Set('Jonas'));
+
+console.log(orderSet.size);
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('Bread'));
+orderSet.add('galic bread');
+orderSet.add('galic bread');
+orderSet.delete('risotto');
+// orderSet.clear();
+console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staff, staffUnique);
+console.log(
+  new Set(['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter']).size
+);
+
+console.log(new Set('graceyouya').size);
+
 //////////////////////////////////////////////////////////////////
 // // Property NAMES
 // const properties = Object.keys(openingHours);
@@ -446,55 +481,59 @@ game.odds;
 // const aaa = 'odds';
 game['odds'];
 
+///////////////////////////////////////////////////////
 // Challenge 2
 
-// 1.
-for (const playerName of game.scored.entries()) {
-  console.log(`Goal${playerName[0] + 1}: ${playerName[1]}`);
-}
+// // 1.
+// for (const playerName of game.scored.entries()) {
+//   console.log(`Goal${playerName[0] + 1}: ${playerName[1]}`);
+// }
 
-// 2.
+// // 2.
 
-const oddNum = Object.values(game.odds);
-console.log(oddNum);
-let oddItem = 0;
-for (const odd of oddNum) {
-  oddItem += odd;
-}
-console.log(`${oddItem / oddNum.length}`);
+// const oddNum = Object.values(game.odds);
+// console.log(oddNum);
+// let oddItem = 0;
+// for (const odd of oddNum) {
+//   oddItem += odd;
+// }
+// console.log(`${oddItem / oddNum.length}`);
 
-// 3.
-const teamMapping = {
-  team1: game.team1,
-  x: 'draw',
-  team2: game.team2,
-};
+// // 3.
+// const teamMapping = {
+//   team1: game.team1,
+//   x: 'draw',
+//   team2: game.team2,
+// };
 
-const oddEntires = Object.entries(game.odds);
-console.log(oddEntires);
+// const oddEntires = Object.entries(game.odds);
+// console.log(oddEntires);
 
-for (const [team, value] of oddEntires) {
-  console.log(`odd of ${teamMapping[team]}: ${value}`);
+// for (const [team, value] of oddEntires) {
+//   console.log(`odd of ${teamMapping[team]}: ${value}`);
 
-  // console.log(`Odd od ${game[team] || 'draw'}: ${value}`);
-}
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} ${value}`);
 
-// 4.
-const scorers = {};
-// scorers.Lewandowski;
-// scorers['Lewandowski'];
+//   // console.log(`Odd od ${game[team] || 'draw'}: ${value}`);
+// }
 
-for (const scorer of game.scored) {
-  // scorers[scorer]
-  // console.log(scorer);
-  if (!scorers[scorer]) {
-    scorers[scorer] = 1;
-  } else {
-    scorers[scorer] += 1;
-  }
-  // scorers[scorer] = 1;
-}
-console.log(scorers);
+// // 4.
+// const scorers = {};
+// // scorers.Lewandowski;
+// // scorers['Lewandowski'];
+
+// for (const scorer of game.scored) {
+//   // scorers[scorer]
+//   // console.log(scorer);
+//   if (!scorers[scorer]) {
+//     scorers[scorer] = 1;
+//   } else {
+//     scorers[scorer] += 1;
+//   }
+//   // scorers[scorer] = 1;
+// }
+// console.log(scorers);
 
 // Challenge 1
 // // 1.
