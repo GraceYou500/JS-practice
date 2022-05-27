@@ -73,40 +73,114 @@ const restaurant = {
   },
 };
 
+const rest = new Map();
+rest.set('name', 'Classical Itali');
+rest.set(1, 'Firanze, Italy');
+console.log(rest.set(2, 'Lisbon, Poirta'));
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open')
+  .set(false, 'we are close');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+
+const result = time > rest.get('open') && time < rest.get('close');
+console.log(rest.get(result));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
+console.log(rest.size);
+// rest.clear();
+
+const arr = [1, 2];
+rest.set(arr, 'Test');
+
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+
+console.log(rest.get(arr));
+
+const question = new Map([
+  ['question', 'what is the best in world'],
+  [1, 'C'],
+  [2, 'JAva'],
+  [3, 'JS'],
+  ['correct', 3],
+  [true, 'Correct anwser'],
+  [false, 'Try again'],
+]);
+
+console.log(question);
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Quiz app
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt('You answer'));
+const answer = 3;
+
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+// Convert map to Array
+
+console.log([...question]);
+console.log(question);
+// console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
 //////////////////////////////////////////////
 // Set
-const orderSet = new Set([
-  'Psta',
-  'pizza',
-  'pizza',
-  'risotto',
-  'Psta',
-  'pizza',
-]);
-console.log(orderSet);
+// const orderSet = new Set([
+//   'Psta',
+//   'pizza',
+//   'pizza',
+//   'risotto',
+//   'Psta',
+//   'pizza',
+// ]);
+// console.log(orderSet);
 
-console.log(new Set('Jonas'));
+// console.log(new Set('Jonas'));
 
-console.log(orderSet.size);
-console.log(orderSet.has('pizza'));
-console.log(orderSet.has('Bread'));
-orderSet.add('galic bread');
-orderSet.add('galic bread');
-orderSet.delete('risotto');
-// orderSet.clear();
-console.log(orderSet);
+// console.log(orderSet.size);
+// console.log(orderSet.has('pizza'));
+// console.log(orderSet.has('Bread'));
+// orderSet.add('galic bread');
+// orderSet.add('galic bread');
+// orderSet.delete('risotto');
+// // orderSet.clear();
+// console.log(orderSet);
 
-for (const order of orderSet) console.log(order);
+// for (const order of orderSet) console.log(order);
 
-// Example
-const staff = ['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter'];
-const staffUnique = [...new Set(staff)];
-console.log(staff, staffUnique);
-console.log(
-  new Set(['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter']).size
-);
+// // Example
+// const staff = ['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter'];
+// const staffUnique = [...new Set(staff)];
+// console.log(staff, staffUnique);
+// console.log(
+//   new Set(['Waiter', 'chef', 'Waiter', 'Manager', 'chef', 'Waiter']).size
+// );
 
-console.log(new Set('graceyouya').size);
+// console.log(new Set('graceyouya').size);
 
 //////////////////////////////////////////////////////////////////
 // // Property NAMES
