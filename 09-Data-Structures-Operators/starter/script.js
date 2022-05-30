@@ -141,7 +141,7 @@ console.log(question.get(question.get('correct') === answer));
 
 // Convert map to Array
 
-console.log([...question]);
+console.log('map to array', [...question]);
 console.log(question);
 // console.log([...question.entries()]);
 console.log([...question.keys()]);
@@ -656,3 +656,56 @@ game['odds'];
 
 // team1 < team2 && console.log('Team 1 is more likely to win');
 // team1 > team2 && console.log('Team 2 is more likely to win');
+
+//Challenge 3
+
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '� Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '� Substitution'],
+  [64, '� Yellow card'],
+  [69, '� Red card'],
+  [70, '� Substitution'],
+  [72, '� Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '� Yellow card'],
+]);
+
+// 1)
+const eventValue = [...gameEvents.values()];
+const eventSet = [...new Set(eventValue)];
+console.log(eventValue, eventSet);
+console.log('here4', gameEvents.values());
+
+// 2)
+gameEvents.delete(64);
+
+console.log(gameEvents);
+
+// 3)
+
+console.log(`An event happened, on 
+average, every ${90 / gameEvents.size} minutes`);
+
+const eventTime = [...gameEvents.keys()].pop();
+console.log(eventTime);
+
+console.log(`An event happened, on 
+average, every ${eventTime / gameEvents.size} minutes`);
+
+// 4)
+
+for (const [minute, event] of gameEvents) {
+  if (minute <= 45) {
+    console.log(`[FIRST HALF]${minute}: ${event}`);
+  } else {
+    console.log(`[SECOND HALF]${minute}: ${event}`);
+  }
+}
+
+for (const [min, value] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF]${min}: ${value}`);
+}
