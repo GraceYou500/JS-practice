@@ -37,115 +37,115 @@ const openingHours = {
 // console.log(username);
 // console.log(password);
 
-const restaurant = {
-  name: 'Classico Italiano',
-  // name2: {
-  //   firstName: 'Grace',
-  //   lastname: 'You',
-  // },
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   // name2: {
+//   //   firstName: 'Grace',
+//   //   lastname: 'You',
+//   // },
 
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  // ES6 enhanced object literals
-  openingHours,
+//   // ES6 enhanced object literals
+//   openingHours,
 
-  order(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+//   order(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
 
-  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
-    console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}.`
-    );
-  },
+//   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+//     console.log(
+//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}.`
+//     );
+//   },
 
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
+//   orderPasta: function (ing1, ing2, ing3) {
+//     console.log(
+//       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+//     );
+//   },
 
-  orderPizza: function (mainIng, ...otherIngs) {
-    console.log(mainIng, otherIngs);
-  },
-};
+//   orderPizza: function (mainIng, ...otherIngs) {
+//     console.log(mainIng, otherIngs);
+//   },
+// };
 
-const rest = new Map();
-rest.set('name', 'Classical Itali');
-rest.set(1, 'Firanze, Italy');
-console.log(rest.set(2, 'Lisbon, Poirta'));
+// const rest = new Map();
+// rest.set('name', 'Classical Itali');
+// rest.set(1, 'Firanze, Italy');
+// console.log(rest.set(2, 'Lisbon, Poirta'));
 
-rest
-  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'we are open')
-  .set(false, 'we are close');
+// rest
+//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'we are open')
+//   .set(false, 'we are close');
 
-console.log(rest.get('name'));
-console.log(rest.get(true));
-console.log(rest.get(1));
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
 
-const time = 21;
+// const time = 21;
 
-const result = time > rest.get('open') && time < rest.get('close');
-console.log(rest.get(result));
+// const result = time > rest.get('open') && time < rest.get('close');
+// console.log(rest.get(result));
 
-console.log(rest.has('categories'));
-rest.delete(2);
-console.log(rest);
-console.log(rest.size);
-// rest.clear();
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// console.log(rest);
+// console.log(rest.size);
+// // rest.clear();
 
-const arr = [1, 2];
-rest.set(arr, 'Test');
+// const arr = [1, 2];
+// rest.set(arr, 'Test');
 
-rest.set(document.querySelector('h1'), 'Heading');
-console.log(rest);
+// rest.set(document.querySelector('h1'), 'Heading');
+// console.log(rest);
 
-console.log(rest.get(arr));
+// console.log(rest.get(arr));
 
-const question = new Map([
-  ['question', 'what is the best in world'],
-  [1, 'C'],
-  [2, 'JAva'],
-  [3, 'JS'],
-  ['correct', 3],
-  [true, 'Correct anwser'],
-  [false, 'Try again'],
-]);
+// const question = new Map([
+//   ['question', 'what is the best in world'],
+//   [1, 'C'],
+//   [2, 'JAva'],
+//   [3, 'JS'],
+//   ['correct', 3],
+//   [true, 'Correct anwser'],
+//   [false, 'Try again'],
+// ]);
 
-console.log(question);
+// console.log(question);
 
-// Convert object to map
-console.log(Object.entries(openingHours));
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// // Convert object to map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
 
-// Quiz app
-console.log(question.get('question'));
+// // Quiz app
+// console.log(question.get('question'));
 
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
 
-// const answer = Number(prompt('You answer'));
-const answer = 3;
+// // const answer = Number(prompt('You answer'));
+// const answer = 3;
 
-console.log(answer);
+// console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+// console.log(question.get(question.get('correct') === answer));
 
-// Convert map to Array
+// // Convert map to Array
 
-console.log('map to array', [...question]);
-console.log(question);
-// console.log([...question.entries()]);
-console.log([...question.keys()]);
-console.log([...question.values()]);
+// console.log('map to array', [...question]);
+// console.log(question);
+// // console.log([...question.entries()]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 
 //////////////////////////////////////////////
 // Set
@@ -717,56 +717,56 @@ game['odds'];
 
 // Split and join
 
-console.log('a+very+nice+string'.split('+'));
-console.log('Jonas Schem'.split(' '));
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Jonas Schem'.split(' '));
 
-const [firstName, lastName] = 'Jonas Schem'.split(' ');
+// const [firstName, lastName] = 'Jonas Schem'.split(' ');
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizationName = function (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
+// const capitalizationName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
 
-  for (const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   for (const n of names) {
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
 
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  console.log(namesUpper.join(' '));
-};
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
+// };
 
-capitalizationName('jessica ann smith davis');
-capitalizationName('grace you');
+// capitalizationName('jessica ann smith davis');
+// capitalizationName('grace you');
 
-// Padding
+// // Padding
 
-const mesage = 'Go to gate 23!';
-console.log(mesage.padStart(20, '+').padEnd(30, '+'));
+// const mesage = 'Go to gate 23!';
+// console.log(mesage.padStart(20, '+').padEnd(30, '+'));
 
-const maskCreditCard = function (number) {
-  const str = number + '';
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
+// const maskCreditCard = function (number) {
+//   const str = number + '';
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// };
 
-console.log(maskCreditCard(432345354));
-console.log(maskCreditCard(4323456734232354));
-console.log(maskCreditCard('5437963976035242425788'));
+// console.log(maskCreditCard(432345354));
+// console.log(maskCreditCard(4323456734232354));
+// console.log(maskCreditCard('5437963976035242425788'));
 
-// Repeat
+// // Repeat
 
-const message2 = 'Bad weather... All Departues Delayed... ';
+// const message2 = 'Bad weather... All Departues Delayed... ';
 
-console.log(message2.repeat(5));
+// console.log(message2.repeat(5));
 
-const planesInLine = function (n) {
-  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
-};
-planesInLine(5);
-planesInLine(3);
-planesInLine(12);
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+// };
+// planesInLine(5);
+// planesInLine(3);
+// planesInLine(12);
 
 // Working with strings - Part 2
 
@@ -874,3 +874,26 @@ planesInLine(12);
 // checkMidSeat('11B');
 // checkMidSeat('32C');
 // checkMidSeat('3E');
+
+// Challenge 4
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    // console.log(output);
+    console.log(`${output.padEnd(20)}${'✔'.repeat(i + 1)}`);
+  }
+});
