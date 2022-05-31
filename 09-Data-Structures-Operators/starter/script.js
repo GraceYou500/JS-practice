@@ -4,6 +4,19 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+// String exercise
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`;
+  console.log(output.padStart(45));
+}
+
 // Data needed for first part of the section
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const asdasd = 'thu';
@@ -876,6 +889,10 @@ game['odds'];
 // checkMidSeat('3E');
 
 // Challenge 4
+// /_(.)/g;
+let bbb = 'underscore_case';
+const aaa = bbb.replace(/_(.)/g, (match, first) => first.toUpperCase());
+console.log('aaa', aaa);
 
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
@@ -884,6 +901,10 @@ const button = document.querySelector('button');
 
 button.addEventListener('click', function () {
   const text = document.querySelector('textarea').value;
+  console.log(
+    'bbbb',
+    text.replace(/_(.)/g, (match, first) => first.toUpperCase())
+  );
   const rows = text.split('\n');
   console.log(rows);
 
