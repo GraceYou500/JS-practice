@@ -95,21 +95,74 @@
 
 // Create a function that return a new function
 
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet('Hey');
+// greeterHey('Jonas');
+// greeterHey('Steven');
+
+// greet('Hello')('Grace');
+
+// // Challenge
+// const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+// greetArr('Hi')('Grace');
+
+// const Arr = arrName => console.log();
+
+const lufthansa = {
+  airLine: 'Luftsa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
-const greeterHey = greet('Hey');
-greeterHey('Jonas');
-greeterHey('Steven');
+lufthansa.book(230, 'Grace You');
+lufthansa.book(265, 'Jona Smith');
+console.log(lufthansa);
 
-greet('Hello')('Grace');
+const eurowings = {
+  airLine: 'Eurowings',
+  ialaCode: 'EW',
+  bookings: [],
+};
 
-// Challenge
-const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+const book = lufthansa.book;
 
-greetArr('Hi')('Grace');
+// Does NOT work
+// book(23, 'Sara');
 
-const Arr = arrName => console.log();
+// Call method
+book.call(eurowings, 23, 'Sara Will');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airLine: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 583, 'Carl Li');
+console.log(swiss);
+
+// Apply method
+const flightData = [583, 'Goerge Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.apply(swiss, [345, 'Jin Jiu']);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
