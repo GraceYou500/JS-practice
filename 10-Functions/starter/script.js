@@ -256,25 +256,87 @@
 // poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 // poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
-const runOnece = function () {
-  console.log('This will run again');
+// const runOnece = function () {
+//   console.log('This will run again');
+// };
+
+// runOnece();
+
+// // IIFE: Immideately invoked function expression
+// (function () {
+//   console.log('This will run again');
+//   const isPrivate = 23;
+// })();
+
+// // console.log(isPrivate);
+
+// (() => console.log('This will NOT run again'))();
+
+// {
+//   const inPrivate = 23;
+//   var notPrivate = 46;
+// }
+// // console.log(isPrivate);
+// console.log(notPrivate);
+
+// Closures
+
+// const secureBooking = function () {
+//   let passengerCount = 0;
+
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   };
+// };
+
+// const booker = secureBooking();
+
+// booker();
+// booker();
+// booker();
+
+// console.dir(booker);
+
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
 };
 
-runOnece();
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
 
-// IIFE: Immideately invoked function expression
-(function () {
-  console.log('This will run again');
-  const isPrivate = 23;
-})();
+g();
+f();
+console.dir(f);
 
-// console.log(isPrivate);
+// Re-assigning f function
+h();
+f();
 
-(() => console.log('This will NOT run again'))();
+console.dir(f);
 
-{
-  const inPrivate = 23;
-  var notPrivate = 46;
-}
-// console.log(isPrivate);
-console.log(notPrivate);
+// Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000;
+
+boardPassengers(180, 3);
