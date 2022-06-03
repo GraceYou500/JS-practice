@@ -81,6 +81,14 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+// REDUCE mathod for balance
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+// Compute username
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -208,7 +216,7 @@ console.log(accounts);
 
 // // Map method
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const eurToUsd = 1.1;
 
@@ -248,3 +256,43 @@ console.log(accounts);
 // // }); // console log isn't a value, is undefined value.
 
 // console.log(movementsDescriptions);
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depostsFor = [];
+for (const mov of movements) if (mov > 0) depostsFor.push(mov);
+console.log(depostsFor);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+
+// Reduce method => single value
+
+console.log(movements);
+
+// const balance = movements.reduce(function (acc, cur, i) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) {
+  balance2 += mov;
+}
+console.log(balance2);
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+
+console.log(max);
