@@ -81,6 +81,21 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+// const user = 'Steven Thomas Williams'; // username: stw
+
+createUsernames(accounts);
+console.log(accounts);
+
 // console.log(containerMovements.innerHTML);
 
 /////////////////////////////////////////////////
@@ -191,45 +206,45 @@ displayMovements(account1.movements);
 //   console.log(`${value}: ${value}`);
 // });
 
-// Map method
+// // Map method
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-// const movementsUSD = movements.map(function (mov) {
-//   return mov * eurToUsd;
-// });
+// // const movementsUSD = movements.map(function (mov) {
+// //   return mov * eurToUsd;
+// // });
 
-const movementsUSD = movements.map(mov => mov * eurToUsd);
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) {
-  movementsUSDfor.push(mov * eurToUsd);
-}
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements) {
+//   movementsUSDfor.push(mov * eurToUsd);
+// }
+// console.log(movementsUSDfor);
 
-const movementsDescriptions = movements.map(
-  (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
-      mov
-    )}`
-  // if (mov > 0) {
+// const movementsDescriptions = movements.map(
+//   (mov, i) =>
+//     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+//       mov
+//     )}`
+//   // if (mov > 0) {
 
-  //   return `Movement ${i + 1}: You deposited ${mov}`;
-  // } else {
-  //   return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
-  // }
-);
-// const movementsDescriptions = movements.map((mov, i, arr) => {
-//   if (mov > 0) {
-//     return console.log(`Movement ${i + 1}: You deposited ${mov}`);
-//   } else {
-//     return console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
-//   }
-// }); // console log isn't a value, is undefined value.
+//   //   return `Movement ${i + 1}: You deposited ${mov}`;
+//   // } else {
+//   //   return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+//   // }
+// );
+// // const movementsDescriptions = movements.map((mov, i, arr) => {
+// //   if (mov > 0) {
+// //     return console.log(`Movement ${i + 1}: You deposited ${mov}`);
+// //   } else {
+// //     return console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+// //   }
+// // }); // console log isn't a value, is undefined value.
 
-console.log(movementsDescriptions);
+// console.log(movementsDescriptions);
