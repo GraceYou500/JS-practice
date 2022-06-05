@@ -24,22 +24,33 @@
 // checkDogs(juliaDog, kateDog);
 // checkDogs(juliaDog2, kateDog2);
 
-// Challenge 2
+// // Challenge 2
 
 const dogs1 = [5, 2, 4, 1, 15, 8, 3];
 const dogs2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function (dogAges) {
-  const dogHumanAge = dogAges
-    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
-    .filter(age => age >= 18);
-  console.log(dogHumanAge);
-  const calcAvg =
-    // dogHumanAge.reduce((acc, age) => acc + age, 0) / dogHumanAge.length;
+// const calcAverageHumanAge = function (dogAges) {
+//   const dogHumanAge = dogAges
+//     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter(age => age >= 18);
+//   console.log(dogHumanAge);
+//   const calcAvg =
+//     // dogHumanAge.reduce((acc, age) => acc + age, 0) / dogHumanAge.length;
 
-    dogHumanAge.reduce((acc, age, i, arr) => acc + age / arr.length, 0);
-  return calcAvg;
-};
+//     dogHumanAge.reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+//   return calcAvg;
+// };
+
+// console.log(calcAverageHumanAge(dogs1));
+// console.log(calcAverageHumanAge(dogs2));
+
+// Challenge 3 - change 2 into arrow function and chainning
+
+const calcAverageHumanAge = dogAges =>
+  dogAges
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
 console.log(calcAverageHumanAge(dogs1));
 console.log(calcAverageHumanAge(dogs2));
