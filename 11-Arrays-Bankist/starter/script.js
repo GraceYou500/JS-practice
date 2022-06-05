@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
       
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov}€</div>
     </div>
     `;
 
@@ -84,9 +84,34 @@ displayMovements(account1.movements);
 // REDUCE mathod for balance
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+// REDUCE method for deposits and withdraw
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => int + acc, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 // Compute username
 const createUsernames = function (accs) {
@@ -132,7 +157,7 @@ console.log(accounts);
 // console.log(arr.slice());
 // console.log([...arr]);
 
-// // SPLICE method
+// // SPLICE method - will change the original array ( reverse method will alos change original array)
 // // console.log(arr.splice(2));
 // arr.splice(-1);
 // console.log(arr.splice(1, 2)); // second parameter: the number of elements we want to delete, different from slice method
@@ -257,42 +282,55 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(movementsDescriptions);
 
-const deposits = movements.filter(function (mov) {
-  return mov > 0;
-});
-console.log(movements);
-console.log(deposits);
+// const deposits = movements.filter(function (mov) {
+//   return mov > 0;
+// });
+// console.log(movements);
+// console.log(deposits);
 
-const depostsFor = [];
-for (const mov of movements) if (mov > 0) depostsFor.push(mov);
-console.log(depostsFor);
+// const depostsFor = [];
+// for (const mov of movements) if (mov > 0) depostsFor.push(mov);
+// console.log(depostsFor);
 
-const withdrawals = movements.filter(mov => mov < 0);
-console.log(withdrawals);
+// const withdrawals = movements.filter(mov => mov < 0);
+// console.log(withdrawals);
 
-// Reduce method => single value
+// // Reduce method => single value
 
-console.log(movements);
+// console.log(movements);
 
-// const balance = movements.reduce(function (acc, cur, i) {
-//   console.log(`Iteration ${i}: ${acc}`);
-//   return acc + cur;
-// }, 0);
+// // const balance = movements.reduce(function (acc, cur, i) {
+// //   console.log(`Iteration ${i}: ${acc}`);
+// //   return acc + cur;
+// // }, 0);
 
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
-console.log(balance);
+// console.log(balance);
 
-let balance2 = 0;
-for (const mov of movements) {
-  balance2 += mov;
-}
-console.log(balance2);
+// let balance2 = 0;
+// for (const mov of movements) {
+//   balance2 += mov;
+// }
+// console.log(balance2);
 
-// Maximum value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
+// // Maximum value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
 
-console.log(max);
+// console.log(max);
+
+const eurToUsd = 1.1;
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    console.log(arr); // Check the result of last method: filter
+    return mov * eurToUsd;
+  })
+  // .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
