@@ -124,7 +124,6 @@ const createUsernames = function (accs) {
 // const user = 'Steven Thomas Williams'; // username: stw
 
 createUsernames(accounts);
-console.log(accounts);
 
 // console.log(containerMovements.innerHTML);
 
@@ -195,9 +194,25 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
-// FindIndex method - return the index of the found element, not the element itself.
+// Loan feature
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add the movement here
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+
+  inputLoanAmount.value = '';
+});
 
 // Close account
+// FindIndex method - return the index of the found element, not the element itself.
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -433,3 +448,24 @@ const eurToUsd = 1.1;
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(account);
+
+// Some and Every method
+
+console.log(movements);
+
+// EQUALITY
+console.log(movements.includes(-130));
+
+// SOME: CONDITION
+console.log(movements.some(mov => mov === -130));
+console.log(movements.some(mov => mov > 1500)); // any value for the method is true, will be true.
+
+// EVERY
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov < 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
