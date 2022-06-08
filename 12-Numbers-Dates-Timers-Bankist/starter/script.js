@@ -223,7 +223,7 @@ btnClose.addEventListener('click', function (e) {
 
   if (
     inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin
+    +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
@@ -251,3 +251,32 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+// NUmber
+console.log(23 === 23.0);
+
+// Covert string to number
+console.log(Number('23'));
+console.log(+'23');
+
+// Parsing
+console.log(Number.parseInt('30px', 10)); // the number must be in first place
+console.log(Number.parseInt('e30', 10));
+
+// Parsing float
+console.log(Number.parseInt('2.5rem '));
+console.log(Number.parseFloat(' 2.5rem'));
+
+// Check if value is NaN
+console.log(Number.isNaN(+'23x'));
+
+// Checking if a value is number ( best way)
+console.log(Number.isFinite(20)); // isFinite meaning is a number
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(+'20'));
+console.log(Number.isFinite(+'20X')); // False
+console.log(Number.isFinite(23 / 0)); // False
+
+console.log(Number.isInteger(23));
+console.log(Number.isInteger(23.0));
+console.log(Number.isInteger(23 / 0));
