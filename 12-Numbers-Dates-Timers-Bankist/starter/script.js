@@ -369,3 +369,72 @@ console.log(PI);
 
 console.log(Number('230_000')); // _ cannot use in string for numerical separator, _ only can use in number type.
 console.log(parseInt('230_000')); // 230
+
+// BigInt
+console.log(2 ** 53 - 1); // the biggest number JS can safely represent
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+
+console.log(759427597593455566415654642346n);
+console.log(BigInt(7594275975));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(49654589648962866459618932n * 100000000n);
+// console.log(Math.sqrt(16n)); // Math method not work in BigInt.
+
+const huge = 46418946519862589862589865258896n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == 20);
+console.log(20n == '20');
+
+console.log(huge + ' is REALLY BIG!!!'); // the bigint number still converted to string
+
+// Divisions
+console.log(10n / 3n); // 3n: cut the decimal parts
+console.log(10 / 3);
+
+// Dates and Times
+
+// // Creat a date
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date('Jun 08 2022 20:53:58'));
+// console.log(new Date('December 24, 2015'));
+
+// console.log(new Date(account1.movementsDates[0]));
+
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// console.log(new Date(2037, 10, 33, 15, 23, 5));
+
+// console.log(new Date(0));
+// console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// Working with Dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log('here1', future.getTime()); // Get millionsecond
+
+console.log(new Date(2142217380000));
+
+console.log(Date.now()); // Get current millionsecond
+
+console.log(new Date(1654687980459));
+
+future.setFullYear(2040);
+console.log(future);
