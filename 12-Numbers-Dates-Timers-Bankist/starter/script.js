@@ -326,3 +326,46 @@ console.log(Math.floor(-23.3)); // -24
 console.log((2.7).toFixed(0)); // return a string not number
 console.log((2.7).toFixed(3));
 console.log(+(2.345).toFixed(2));
+
+// Remainder operator - return the remainder of a division(返回除法的余数)
+console.log(5 % 2);
+console.log(5 / 2); // 5 = 2*2+1
+
+console.log(8 % 3);
+console.log(8 % 2);
+
+console.log(6 % 2);
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    // 0, 2, 4, 6,8
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+    // 0,3, 6, 9
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
+
+// Nth times -> can use reminder operator division for that
+
+// Numeric Separators -> to format numbers
+
+// 287,460,000,000
+const diameter = 287460000000;
+console.log(diameter);
+
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.14_15;
+console.log(PI);
+
+console.log(Number('230_000')); // _ cannot use in string for numerical separator, _ only can use in number type.
+console.log(parseInt('230_000')); // 230
