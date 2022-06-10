@@ -69,7 +69,7 @@ header.prepend(message);
 // header.append(message.cloneNode(true)); // true means all the child elements will also be copied.
 
 // Two more method
-header.before(message); // add the element as simbling, before the header element
+// header.before(message); // add the element as simbling, before the header element
 // header.after(message);// same
 
 // Delete elements
@@ -78,3 +78,53 @@ addEventListener('click', function () {
   message.remove(); // recent way to remove element.
   // message.parentElement.removeChild(message); // the way to remove element before
 });
+
+// Reference lecture - classes, attributes, styles
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.backgroundColor); // only work for the style we set manually as inline style
+console.log(getComputedStyle(message).height); // real style that show in webpage
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+console.log(getComputedStyle(message).height);
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.src);
+console.log(logo.alt);
+console.log(logo.className);
+
+logo.alt = 'Beautiful mini logo';
+
+// Non-standered => not work
+// console.log(logo.designer);
+console.log(logo.getAttribute('designer')); // Can get non-standard attributes
+logo.setAttribute('company', 'Bankist'); // Create new attrobute: company = "Bankist"
+
+console.log(logo.getAttribute('src')); // can get relative src as I write in HTML
+
+const link = document.querySelector('.twitter-link');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+const linkLocal = document.querySelector('.nav__link--btn');
+console.log(linkLocal.href); // get the absolute href
+console.log(linkLocal.getAttribute('href')); // can get relative href as I write in HTML
+
+// Date attributes - attributes that start with word data.
+console.log(logo.dataset.versionNumber); // data attributes always store in dataset object.
+
+// Classes
+logo.classList.add('c', 'j');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+// Don't use this - will override all existing classes, only put this own element
+logo.className = 'jonas';
