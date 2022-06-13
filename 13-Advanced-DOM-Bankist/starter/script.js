@@ -174,3 +174,32 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // };
 
 // Third way: use on the HTML attributes.
+
+//rgb(255,255,255)
+const radomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const radomColor = () =>
+  `rgb(${radomInt(0, 255)},${radomInt(0, 255)},${radomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = radomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop event propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = radomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = radomColor();
+    console.log('NAV', e.target, e.currentTarget);
+  }
+  // true // event captured in capture phase
+);
