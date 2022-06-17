@@ -61,3 +61,26 @@ console.log(Person.prototype.constructor === Person);
 
 console.log(Person.__proto__);
 console.log(Object.__proto__);
+
+console.log(jonas.__proto__.__proto__); // propotype property of Object
+console.log(jonas.__proto__.__proto__.__proto__); // top of the propotype chain
+
+console.dir(Person.prototype.constructor);
+
+const arr = [2, 3, 4, 4, 3, 2, 5, 6, 7, 8]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+//Not do this below in actual work
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(h1);
+
+console.dir(x => x + 1);
