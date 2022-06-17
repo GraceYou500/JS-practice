@@ -84,3 +84,30 @@ const h1 = document.querySelector('h1');
 console.dir(h1);
 
 console.dir(x => x + 1);
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  return (this.speed += 10);
+  // console.log(`${this.make} speed is going at ${this.speed}`);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`${this.make} speed is going at ${this.speed}`);
+};
+
+const bmw = new Car('BMW', 120);
+const benz = new Car('Mercedes', 95);
+
+console.log(bmw, benz);
+console.log(bmw.accelerate());
+console.log(bmw.accelerate());
+bmw.accelerate();
+bmw.brake();
+bmw.accelerate();
+
+const tesla = { make: 'tesla', speed: 122 };
