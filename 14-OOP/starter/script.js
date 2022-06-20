@@ -25,6 +25,14 @@ const matila = new Person('Matila', 2017);
 const jack = new Person('Jack', 2000);
 console.log(matila, jack);
 
+Person.hey = function () {
+  console.log('Hey there🙌');
+  console.log(this);
+};
+
+Person.hey();
+// jonas.hey(); Not work
+
 const jay = 'jay';
 
 console.log(jonas instanceof Person);
@@ -124,6 +132,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance methods
   // Methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -147,6 +156,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static method
+  static hey() {
+    console.log('Hey there🙌');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -162,6 +177,8 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 
 jessica.greet();
 
+PersonCl.hey();
+
 // 1. Classes are Not hoisted ( cannot use them before declared)
 // 2. Classes are first-class citizen ( we can pass them into functions, and also return them from functions)
 // 3. Classes are execute in strict mode
@@ -169,6 +186,7 @@ jessica.greet();
 const walter = new PersonCl('Walter White', 1965);
 console.log(walter);
 
+// Setter and getter
 const account = {
   owner: 'jonas',
   movements: [200, 530, 120, 300],
@@ -186,3 +204,32 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+
+// Static method
+
+// Object.create()
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto); // create a new object and link to the prototype
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979); // Sarah called the method, so this keyword will be sarah object.
+sarah.calcAge();
+
+// challenge 2
