@@ -137,110 +137,142 @@ class PersonCl {
   }
 }
 
-const jessica = new PersonCl('Jessica Davis', 1996);
-console.log(jessica);
-jessica.calcAge();
-console.log(jessica.age);
+// const jessica = new PersonCl('Jessica Davis', 1996);
+// console.log(jessica);
+// jessica.calcAge();
+// console.log(jessica.age);
 
-console.log(jessica.__proto__ === PersonCl.prototype);
+// console.log(jessica.__proto__ === PersonCl.prototype);
 
-// PersonCl.prototype.greet = function () {
-//   console.log(`Hey ${this.firstName}`);
+// // PersonCl.prototype.greet = function () {
+// //   console.log(`Hey ${this.firstName}`);
+// // };
+
+// jessica.greet();
+
+// PersonCl.hey();
+
+// // 1. Classes are Not hoisted ( cannot use them before declared)
+// // 2. Classes are first-class citizen ( we can pass them into functions, and also return them from functions)
+// // 3. Classes are execute in strict mode
+
+// const walter = new PersonCl('Walter White', 1965);
+// console.log(walter);
+
+// // Setter and getter
+// const account = {
+//   owner: 'jonas',
+//   movements: [200, 530, 120, 300],
+
+//   get latest() {
+//     return this.movements.slice(-1).pop();
+//   },
+
+//   set latest(mov) {
+//     this.movements.push(mov);
+//   },
 // };
 
-jessica.greet();
+// console.log(account.latest);
 
-PersonCl.hey();
+// account.latest = 50;
+// console.log(account.movements);
 
-// 1. Classes are Not hoisted ( cannot use them before declared)
-// 2. Classes are first-class citizen ( we can pass them into functions, and also return them from functions)
-// 3. Classes are execute in strict mode
+// // Static method
 
-const walter = new PersonCl('Walter White', 1965);
-console.log(walter);
+// // Object.create()
 
-// Setter and getter
-const account = {
-  owner: 'jonas',
-  movements: [200, 530, 120, 300],
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
 
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
 
-  set latest(mov) {
-    this.movements.push(mov);
-  },
-};
+// const steven = Object.create(PersonProto); // create a new object and link to the prototype
+// console.log(steven);
+// steven.name = 'Steven';
+// steven.birthYear = 2002;
+// steven.calcAge();
 
-console.log(account.latest);
+// console.log(steven.__proto__ === PersonProto);
 
-account.latest = 50;
-console.log(account.movements);
+// const sarah = Object.create(PersonProto);
+// sarah.init('Sarah', 1979); // Sarah called the method, so this keyword will be sarah object.
+// sarah.calcAge();
 
-// Static method
+// // inheritance between classes
 
-// Object.create()
+// // Constructor functions
+// const Person = function (firstName, birthYear) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
 
-const PersonProto = {
+// Person.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
+
+// const Student = function (firstName, birthYear, course) {
+//   Person.call(this, firstName, birthYear);
+//   this.course = course;
+// };
+
+// // Linking prototypes
+// Student.prototype = Object.create(Person.prototype);
+
+// Student.prototype.introduce = function () {
+//   console.log(`My name is ${this.firstName} and study ${this.course}`);
+// };
+
+// const mike = new Student('Mike', 2020, 'Computer');
+// console.log(mike);
+
+// mike.introduce();
+// mike.calcAge();
+
+// console.log(mike.__proto__);
+// console.log(mike.__proto__.__proto__);
+
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person); // Also true, as we linked the prototype of Person and Student
+// console.log(mike instanceof Object);
+
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
+
+// ES6 Classes
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fulltName} and study ${this.course}`);
+  }
+
   calcAge() {
-    console.log(2037 - this.birthYear);
-  },
+    console.log(
+      `i am ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }`
+    );
+  }
+}
 
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+const Martah = new StudentCl('marta Jonas', 2012);
+const Marta = new StudentCl('marta Jonas', 2012, 'computer');
 
-const steven = Object.create(PersonProto); // create a new object and link to the prototype
-console.log(steven);
-steven.name = 'Steven';
-steven.birthYear = 2002;
-steven.calcAge();
+console.log(Martah.age);
+Martah.calcAge();
 
-console.log(steven.__proto__ === PersonProto);
-
-const sarah = Object.create(PersonProto);
-sarah.init('Sarah', 1979); // Sarah called the method, so this keyword will be sarah object.
-sarah.calcAge();
-
-// inheritance between classes
-
-// Constructor functions
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
-
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
-
-const Student = function (firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear);
-  this.course = course;
-};
-
-// Linking prototypes
-Student.prototype = Object.create(Person.prototype);
-
-Student.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName} and study ${this.course}`);
-};
-
-const mike = new Student('Mike', 2020, 'Computer');
-console.log(mike);
-
-mike.introduce();
-mike.calcAge();
-
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
-
-console.log(mike instanceof Student);
-console.log(mike instanceof Person); // Also true, as we linked the prototype of Person and Student
-console.log(mike instanceof Object);
-
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
+Marta.calcAge();
