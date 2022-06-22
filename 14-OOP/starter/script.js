@@ -247,32 +247,62 @@ class PersonCl {
 
 // ES6 Classes
 
-class StudentCl extends PersonCl {
-  constructor(fullName, birthYear, course) {
-    // Always needs to happen first!
-    super(fullName, birthYear);
-    this.course = course;
-  }
+// class StudentCl extends PersonCl {
+//   constructor(fullName, birthYear, course) {
+//     // Always needs to happen first!
+//     super(fullName, birthYear);
+//     this.course = course;
+//   }
 
-  introduce() {
-    console.log(`My name is ${this.fulltName} and study ${this.course}`);
-  }
+//   introduce() {
+//     console.log(`My name is ${this.fulltName} and study ${this.course}`);
+//   }
 
+//   calcAge() {
+//     console.log(
+//       `i am ${
+//         2037 - this.birthYear
+//       } years old, but as a student I feel more like ${
+//         2037 - this.birthYear + 10
+//       }`
+//     );
+//   }
+// }
+
+// const Martah = new StudentCl('marta Jonas', 2012);
+// const Marta = new StudentCl('marta Jonas', 2012, 'computer');
+
+// console.log(Martah.age);
+// Martah.calcAge();
+
+// Marta.calcAge();
+
+// Object Create - inherance between classes
+
+const PersonProto = {
   calcAge() {
-    console.log(
-      `i am ${
-        2037 - this.birthYear
-      } years old, but as a student I feel more like ${
-        2037 - this.birthYear + 10
-      }`
-    );
-  }
-}
+    console.log(2037 - this.birthYear);
+  },
 
-const Martah = new StudentCl('marta Jonas', 2012);
-const Marta = new StudentCl('marta Jonas', 2012, 'computer');
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
 
-console.log(Martah.age);
-Martah.calcAge();
+const steven = Object.create(PersonProto);
 
-Marta.calcAge();
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('jay', 2010, 'compouter');
+jay.introduce();
