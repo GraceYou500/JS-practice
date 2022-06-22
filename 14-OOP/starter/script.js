@@ -277,32 +277,106 @@ class PersonCl {
 
 // Marta.calcAge();
 
-// Object Create - inherance between classes
+// // Object Create - inherance between classes
 
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
 
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
 
-const steven = Object.create(PersonProto);
+// const steven = Object.create(PersonProto);
 
-const StudentProto = Object.create(PersonProto);
+// const StudentProto = Object.create(PersonProto);
 
-StudentProto.init = function (firstName, birthYear, course) {
-  PersonProto.init.call(this, firstName, birthYear);
-  this.course = course;
-};
+// StudentProto.init = function (firstName, birthYear, course) {
+//   PersonProto.init.call(this, firstName, birthYear);
+//   this.course = course;
+// };
 
-StudentProto.introduce = function () {
-  console.log(`My name is ${this.firstName} and study ${this.course}`);
-};
+// StudentProto.introduce = function () {
+//   console.log(`My name is ${this.firstName} and study ${this.course}`);
+// };
 
-const jay = Object.create(StudentProto);
-jay.init('jay', 2010, 'compouter');
-jay.introduce();
+// const jay = Object.create(StudentProto);
+// jay.init('jay', 2010, 'compouter');
+// jay.introduce();
+
+// 1) Public (instance) fields
+// 2) Private fields
+// 3) public methods
+// 4) Private methods
+class Account {
+  // 1) define public fields (still present on all instances, not in prototype)
+  locale = navigator.language;
+
+  // 2) Private fields (also available on instance, properties are really not accessable by outside (only available in Google Chrome now))
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+
+    // Protect property
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+
+    console.log(`Thanks for opening an accoint, ${owner}`);
+  }
+
+  // 3) public methods
+  // Public interface of our objects
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val);
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approeved`);
+    }
+  }
+
+  static helper() {
+    console.log('Helper');
+  }
+
+  // 4) Private methods
+  _approveLoan(val) {
+    return true;
+  }
+}
+
+const acc1 = new Account('jonas', 'UER', 1111);
+console.log(acc1);
+
+// acc1._movements.push(250);
+// acc1.movements.push(-140);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+// acc1.approveLoan(1000);
+console.log(acc1.getMovements());
+
+console.log(acc1);
+
+// console.log(acc1.pin);
+// console.log(acc1.#movements);
+// console.log(acc1.#pin);
+Account.helper();
