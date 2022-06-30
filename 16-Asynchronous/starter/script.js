@@ -132,8 +132,8 @@ const renderCountry = function (data, className = '') {
 // request.send();
 
 // Fetch API
-const request = fetch('https://restcountries.com/v2/name/china');
-console.log(request);
+// const request = fetch('https://restcountries.com/v2/name/china');
+// console.log(request);
 
 // Consume promise
 // const getCountryData = function (country) {
@@ -150,6 +150,7 @@ console.log(request);
 // };
 
 const getJSON = function (url, errorMsg = 'Sth went wrong') {
+  console.log('here4', url);
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`); // Promises immidiately reject
 
@@ -199,23 +200,23 @@ const getJSON = function (url, errorMsg = 'Sth went wrong') {
 
 const getCountryData = function (country) {
   // Country 1
-
+  console.log('here3', country);
   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found ')
     .then(data => {
-      console.log('here0');
+      // console.log('here0');
       renderCountry(data[0]);
 
-      console.log('here1');
-      console.log('here1.5', data[0].borders);
+      // console.log('here1');
+      // console.log('here1.5', data[0].borders);
       const neighbour = data[0].borders;
-      console.log('here5', data);
+      // console.log('here5', data);
 
-      console.log('here4', neighbour);
+      // console.log('here4', neighbour);
 
       if (!Array.isArray(neighbour) || !neighbour.length) {
-        console.log('hvgfeiswhfcv');
+        // console.log('hvgfeiswhfcv');
         const er = new Error('No neighbour found!');
-        console.log('here2', er);
+        // console.log('here2', er);
         throw new Error('No neighbour found!'); // will immi reject the promise, until found catch handler.
       }
 
@@ -235,7 +236,7 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('portugal');
+  // getCountryData('portugal');
 });
 
 getCountryData('australia');
