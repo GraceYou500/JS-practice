@@ -241,11 +241,63 @@ const getJSON = function (url, errorMsg = 'Sth went wrong') {
 
 // getCountryData('australia');
 
-console.log('Test start');
-setTimeout(() => console.log('0 sec timer'), 0);
-Promise.resolve('Resolved promise 1').then(res => console.log(res));
-Promise.resolve('Resolved promise 2').then(res => {
-  for (let i = 0; i < 10000000000; i++) {}
-  console.log(res);
-});
-console.log('Test end');
+/////////////////////////////////////////////////////////////////////////////
+// Event Loop
+// console.log('Test start');
+// setTimeout(() => console.log('0 sec timer'), 0);
+// Promise.resolve('Resolved promise 1').then(res => console.log(res));
+// Promise.resolve('Resolved promise 2').then(res => {
+//   for (let i = 0; i < 100000; i++) {}
+//   console.log(res);
+// });
+// console.log('Test end');
+
+////////////////////////////////////////////////////////////////////
+// Building Promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('lottery draw is happening 🎁');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('YOU WIM 😜');
+    } else {
+      reject(new Error('You Lost your money 👀'));
+    }
+  }, 2000);
+}); // excutor function
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// Promisifying setTimeout
+const wait = function (second) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, second * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log('I waited 1 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited 2 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited 3 seconds');
+    return wait(1);
+  })
+  .then(() => console.log('I waited 4 seconds'));
+
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   setTimeout(() => {
+//     console.log('2 second passed');
+//     setTimeout(() => {
+//       console.log('3 second passed');
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
