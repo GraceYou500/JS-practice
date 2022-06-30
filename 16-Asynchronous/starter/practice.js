@@ -18,7 +18,10 @@ const whereAmI = function (lat, lng) {
       if (!response.ok) throw new Error(`Country not found ${response.status}`);
       return response.json();
     })
-    .then(data => renderCountry(data[0]))
+    .then(data => {
+      console.log(data);
+      renderCountry(data[0]);
+    })
     .catch(err => console.error(`${err} 💥💥💥`));
 };
 whereAmI(' -33.933', ' 18.474');

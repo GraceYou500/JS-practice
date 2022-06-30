@@ -198,45 +198,54 @@ const getJSON = function (url, errorMsg = 'Sth went wrong') {
 ///////////////////////////////////////////////////////////////////////////////
 // handle error in Promises ( lose internet connection)
 
-const getCountryData = function (country) {
-  // Country 1
-  console.log('here3', country);
-  getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found ')
-    .then(data => {
-      // console.log('here0');
-      renderCountry(data[0]);
+// const getCountryData = function (country) {
+//   // Country 1
+//   console.log('here3', country);
+//   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found ')
+//     .then(data => {
+//       // console.log('here0');
+//       renderCountry(data[0]);
 
-      // console.log('here1');
-      // console.log('here1.5', data[0].borders);
-      const neighbour = data[0].borders;
-      // console.log('here5', data);
+//       // console.log('here1');
+//       // console.log('here1.5', data[0].borders);
+//       const neighbour = data[0].borders;
+//       // console.log('here5', data);
 
-      // console.log('here4', neighbour);
+//       // console.log('here4', neighbour);
 
-      if (!Array.isArray(neighbour) || !neighbour.length) {
-        // console.log('hvgfeiswhfcv');
-        const er = new Error('No neighbour found!');
-        // console.log('here2', er);
-        throw new Error('No neighbour found!'); // will immi reject the promise, until found catch handler.
-      }
+//       if (!Array.isArray(neighbour) || !neighbour.length) {
+//         // console.log('hvgfeiswhfcv');
+//         const er = new Error('No neighbour found!');
+//         // console.log('here2', er);
+//         throw new Error('No neighbour found!'); // will immi reject the promise, until found catch handler.
+//       }
 
-      // Country 2
-      return getJSON(
-        `https://restcountries.com/v2/alpha/${neighbour[0]}`,
-        'Country not found '
-      );
-    })
-    .then(data => renderCountry(data, 'neighbour'))
-    .catch(err => {
-      // catch when rejection promise
-      // console.error(err);
-      renderError(`Something went wrong💥💥💥 ${err.message}.`);
-    })
-    .finally(() => (countriesContainer.style.opacity = 1));
-};
+//       // Country 2
+//       return getJSON(
+//         `https://restcountries.com/v2/alpha/${neighbour[0]}`,
+//         'Country not found '
+//       );
+//     })
+//     .then(data => renderCountry(data, 'neighbour'))
+//     .catch(err => {
+//       // catch when rejection promise
+//       // console.error(err);
+//       renderError(`Something went wrong💥💥💥 ${err.message}.`);
+//     })
+//     .finally(() => (countriesContainer.style.opacity = 1));
+// };
 
-btn.addEventListener('click', function () {
-  // getCountryData('portugal');
+// btn.addEventListener('click', function () {
+//   // getCountryData('portugal');
+// });
+
+// getCountryData('australia');
+
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 10000000000; i++) {}
+  console.log(res);
 });
-
-getCountryData('australia');
+console.log('Test end');
