@@ -299,5 +299,58 @@ wait(1)
 //   }, 1000);
 // }, 1000);
 
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+
+//////////////////////////////////////////////////////////////////////////
+// Promiseify
+
+console.log('Getting position');
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      return fetch(
+        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
+      );
+    })
+
+    .then(response => {
+      console.log('here1', response);
+      if (!response.ok)
+        throw new Error(
+          `Cannot request more than 3 times per second ${response.status}`
+        );
+      return response.json();
+    })
+    .then(data => {
+      console.log('here2', data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+      return fetch(`https://restcountries.com/v2/name/${data.country}`);
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`Country not found ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      renderCountry(data[0]);
+    })
+    .catch(err => console.error(`${err} 💥💥💥`));
+};
+
+btn.addEventListener('click', whereAmI);
