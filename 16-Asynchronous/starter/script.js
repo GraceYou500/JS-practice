@@ -253,41 +253,41 @@ const getJSON = function (url, errorMsg = 'Sth went wrong') {
 // console.log('Test end');
 
 ////////////////////////////////////////////////////////////////////
-// Building Promise
-const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log('lottery draw is happening 🎁');
-  setTimeout(function () {
-    if (Math.random() >= 0.5) {
-      resolve('YOU WIM 😜');
-    } else {
-      reject(new Error('You Lost your money 👀'));
-    }
-  }, 2000);
-}); // excutor function
+// // Building Promise
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log('lottery draw is happening 🎁');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       resolve('YOU WIM 😜');
+//     } else {
+//       reject(new Error('You Lost your money 👀'));
+//     }
+//   }, 2000);
+// }); // excutor function
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
 
-// Promisifying setTimeout
-const wait = function (second) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, second * 1000);
-  });
-};
+// // Promisifying setTimeout
+// const wait = function (second) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, second * 1000);
+//   });
+// };
 
-wait(1)
-  .then(() => {
-    console.log('I waited 1 seconds');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited 2 seconds');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited 3 seconds');
-    return wait(1);
-  })
-  .then(() => console.log('I waited 4 seconds'));
+// wait(1)
+//   .then(() => {
+//     console.log('I waited 1 seconds');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited 2 seconds');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited 3 seconds');
+//     return wait(1);
+//   })
+//   .then(() => console.log('I waited 4 seconds'));
 
 // setTimeout(() => {
 //   console.log('1 second passed');
