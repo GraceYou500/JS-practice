@@ -374,30 +374,37 @@ const whereAmI = async function (country) {
     const resGeo = await fetch(
       `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
     );
-    if (!resGeo.ok) throw new Error('Problem getting location data');
+    // if (!resGeo.ok) throw new Error('Problem getting location data');
+    if (!resGeo.ok) console.log('here3, Problem getting location data');
 
     const dataGeo = await resGeo.json();
-    console.log('here2', dataGeo);
 
     // Country data
 
     const res = await fetch(`https://restcountries.com/v2/name/${country}`);
-    if (!res.ok) throw new Error('Problem getting country');
+    // if (!res.ok) throw new Error('Problem getting country');
+    if (!resGeo.ok) console.log('here4, Problem getting country');
 
     const data = await res.json();
-    console.log('here1', data);
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}`;
   } catch (err) {
-    console.error(`${err}💥💥💥`);
+    console.error(`${err}💥💥💥💥💥💥`);
     renderError(`💥💥${err.message}`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
 
-whereAmI('portugal');
-whereAmI('portugal');
-whereAmI('portugal');
-whereAmI('portugal');
-console.log('I am here FIRST');
+console.log('1:Will get location');
+// const city = whereAmI('portugal');
+// console.log(city);
+// whereAmI('portugal')
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.error(`2: ${err.message} 📛📛`))
+//   .finally(() => console.log('3: Finished getting location'));
 
 // try {
 //   let y = 1;
@@ -406,3 +413,19 @@ console.log('I am here FIRST');
 // } catch (err) {
 //   alert(err.message);
 // }
+
+(async function () {
+  try {
+    const city = await whereAmI('portugal');
+    console.log('2:', city);
+  } catch (err) {
+    console.error(`${err}💥💥💥💥💥💥`);
+  }
+  console.log(`3: I have Finished the location`);
+})();
+
+// (async function () {
+//   const city = await whereAmI('portugal');
+//   console.log('2:', city);
+//   console.log(`3: Finished the location`);
+// })();
