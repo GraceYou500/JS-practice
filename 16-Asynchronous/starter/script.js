@@ -28,7 +28,7 @@ const renderCountry = function (data, className = '') {
   </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 ///////////////////////////////////////
@@ -307,50 +307,82 @@ const getJSON = function (url, errorMsg = 'Sth went wrong') {
 
 console.log('Getting position');
 
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     // navigator.geolocation.getCurrentPosition(
+//     //   position => resolve(position),
+//     //   err => reject(err)
+//     // );
+
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// getPosition().then(pos => console.log(pos));
+
+// const whereAmI = function () {
+//   getPosition()
+//     .then(pos => {
+//       const { latitude: lat, longitude: lng } = pos.coords;
+//       return fetch(
+//         `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
+//       );
+//     })
+
+//     .then(response => {
+//       console.log('here1', response);
+//       if (!response.ok)
+//         throw new Error(
+//           `Cannot request more than 3 times per second ${response.status}`
+//         );
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log('here2', data);
+//       console.log(`You are in ${data.city}, ${data.country}`);
+//       return fetch(`https://restcountries.com/v2/name/${data.country}`);
+//     })
+//     .then(response => {
+//       if (!response.ok) throw new Error(`Country not found ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     })
+//     .catch(err => console.error(`${err} 💥💥💥`));
+// };
+
+// btn.addEventListener('click', whereAmI);
+
+// fetch(`https://restcountries.com/v2/name/${country}`).then(res =>
+//   console.log(res)
+// );
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
-    // navigator.geolocation.getCurrentPosition(
-    //   position => resolve(position),
-    //   err => reject(err)
-    // );
-
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
-// getPosition().then(pos => console.log(pos));
+const whereAmI = async function (country) {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
 
-const whereAmI = function () {
-  getPosition()
-    .then(pos => {
-      const { latitude: lat, longitude: lng } = pos.coords;
-      return fetch(
-        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
-      );
-    })
+  // Reverse geoCoding
+  const resGeo = await fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
+  );
+  const dataGeo = await resGeo.json();
+  console.log('here2', dataGeo);
 
-    .then(response => {
-      console.log('here1', response);
-      if (!response.ok)
-        throw new Error(
-          `Cannot request more than 3 times per second ${response.status}`
-        );
-      return response.json();
-    })
-    .then(data => {
-      console.log('here2', data);
-      console.log(`You are in ${data.city}, ${data.country}`);
-      return fetch(`https://restcountries.com/v2/name/${data.country}`);
-    })
-    .then(response => {
-      if (!response.ok) throw new Error(`Country not found ${response.status}`);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      renderCountry(data[0]);
-    })
-    .catch(err => console.error(`${err} 💥💥💥`));
+  // Country data
+
+  const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+  const data = await res.json();
+  console.log('here1', data);
+  renderCountry(data[0]);
 };
 
-btn.addEventListener('click', whereAmI);
+whereAmI('portugal');
+console.log('I am here FIRST');
