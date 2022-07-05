@@ -364,41 +364,41 @@ const getPosition = function () {
   });
 };
 
-const whereAmI = async function (country) {
-  try {
-    // Geolocation
-    const pos = await getPosition();
-    const { latitude: lat, longitude: lng } = pos.coords;
+// const whereAmI = async function (country) {
+//   try {
+//     // Geolocation
+//     const pos = await getPosition();
+//     const { latitude: lat, longitude: lng } = pos.coords;
 
-    // Reverse geoCoding
-    const resGeo = await fetch(
-      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
-    );
-    // if (!resGeo.ok) throw new Error('Problem getting location data');
-    if (!resGeo.ok) console.log('here3, Problem getting location data');
+//     // Reverse geoCoding
+//     const resGeo = await fetch(
+//       `https://geocode.xyz/${lat},${lng}?geoit=json&auth=820521518415195927368x92094`
+//     );
+//     // if (!resGeo.ok) throw new Error('Problem getting location data');
+//     if (!resGeo.ok) console.log('here3, Problem getting location data');
 
-    const dataGeo = await resGeo.json();
+//     const dataGeo = await resGeo.json();
 
-    // Country data
+//     // Country data
 
-    const res = await fetch(`https://restcountries.com/v2/name/${country}`);
-    // if (!res.ok) throw new Error('Problem getting country');
-    if (!resGeo.ok) console.log('here4, Problem getting country');
+//     const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+//     // if (!res.ok) throw new Error('Problem getting country');
+//     if (!resGeo.ok) console.log('here4, Problem getting country');
 
-    const data = await res.json();
-    renderCountry(data[0]);
+//     const data = await res.json();
+//     renderCountry(data[0]);
 
-    return `You are in ${dataGeo.city}`;
-  } catch (err) {
-    console.error(`${err}💥💥💥💥💥💥`);
-    renderError(`💥💥${err.message}`);
+//     return `You are in ${dataGeo.city}`;
+//   } catch (err) {
+//     console.error(`${err}💥💥💥💥💥💥`);
+//     renderError(`💥💥${err.message}`);
 
-    // Reject promise returned from async function
-    throw err;
-  }
-};
+//     // Reject promise returned from async function
+//     throw err;
+//   }
+// };
 
-console.log('1:Will get location');
+// console.log('1:Will get location');
 // const city = whereAmI('portugal');
 // console.log(city);
 // whereAmI('portugal')
@@ -437,7 +437,7 @@ const get3Countries = async function (c1, c2, c3) {
     // const [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`);
     // console.log([data1.capital, data2.capital, data3.capital]);
 
-    // Promise.all will short circled if there is one error.
+    // Promise.all will short circled if there is one error. if all fulfilled, return a Promise array with all values.
     const data = await Promise.all([
       getJSON(`https://restcountries.com/v2/name/${c1}`),
       getJSON(`https://restcountries.com/v2/name/${c2}`),
